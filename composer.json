@@ -1,0 +1,12 @@
+{
+	"name": "dimadin/preslovar.srb",
+	"description": "пресловар.срб site.",
+	"require": {
+		"dimadin/serbian-transliteration": "dev-master"
+	},
+	"autoload": {
+		"psr-4": {
+			"dimadin\\Preslovar\\": "src/"
+		}
+	}
+}

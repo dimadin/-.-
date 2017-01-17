@@ -1,0 +1,34 @@
+/* Hide elements based on existence of JavaScript */
+.js .hide-if-js,
+.no-js .hide-if-no-js {
+	display: none;
+}
+
+/* Pointer on hover */
+.cursor-pointer:hover {
+	cursor: pointer;
+}
+
+/* Default cursor */
+.field-title:hover {
+	cursor: inherit;
+}
+
+/* Responsive */
+@media ( max-width: 990px ) {
+	/* Smaller title */
+	h1.display-4 {
+		font-size: 2.5rem;
+	}
+
+	/* Smaller buttons */
+	.btn {
+		font-size: .8rem;
+		padding: .5rem .6rem;
+	}
+
+	#privacy-link {
+		padding-top: .2rem;
+		line-height: 1.5;
+	}
+}
