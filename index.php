@@ -36,6 +36,10 @@ Main::load();
 		<?php if ( Fields::$cyrillic_textarea ) : ?>
 			<meta name='robots' content='noindex,nofollow' />
 		<?php endif; ?>
+		<link rel="icon" href="/assets/images/icon/32x32.png" sizes="32x32" />
+		<link rel="icon" href="/assets/images/icon/192x192.png" sizes="192x192" />
+		<link rel="apple-touch-icon-precomposed" href="/assets/images/icon/180x180.png" />
+		<meta name="msapplication-TileImage" content="/assets/images/icon/270x270.png" />
 	</head>
 	<body class="no-js">
 		<script type="text/javascript">
