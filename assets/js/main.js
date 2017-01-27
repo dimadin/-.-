@@ -1,5 +1,12 @@
 $( document ).ready( function() {
-	var autosized = false;
+	var touchSupport, autosized = false;
+
+	// Indicates if the browser supports the W3C Touch Events API (via Modernizr)
+	if ( ('ontouchstart' in window ) || window.DocumentTouch && document instanceof DocumentTouch ) {
+		touchSupport = true;
+	} else {
+		touchSupport = false;
+	}
 
 	// On larger screens, add more textarea rows when they are needed
 	if ( $( window ).width() > 767 ) {
@@ -47,12 +54,14 @@ $( document ).ready( function() {
 			.tooltip( 'show' );
 	} );
 
-	// Hide tooltip when mouse leaves it
+	// Hide tooltip when mouse leaves button
 	$( ".clipboard-button, .resetter-button" ).on( 'mouseleave', function() {
-		if ( 'show' == $( this ).data( 'tooltip-status' ) ) {
-			$( this ).data( 'tooltip-status', 'hide' )
-				.tooltip('hide');
-		}
+		maybeHideTooltip();
+	} );
+
+	// Hide tooltip when text is changed
+	$( "#cyrillic, #latin" ).on( 'keypress', function() {
+		maybeHideTooltip();
 	} );
 
 	// Add values to clipboard on events
@@ -88,9 +97,60 @@ $( document ).ready( function() {
 		e.clearSelection();
 	} );
 
+	// Force autoresizing of textareas
 	var maybeUpdateAutosize = function() {
 		if ( autosized ) {
 			autosize.update( $( 'textarea' ) );
 		}
+	}
+
+	// Hide tooltips on all buttons
+	var maybeHideTooltip = function() {
+		$( ".clipboard-button, .resetter-button" ).each( function() {
+			if ( 'show' == $( this ).data( 'tooltip-status' ) ) {
+				$( this ).data( 'tooltip-status', 'hide' )
+					.tooltip('hide');
+			}
+		} );
+	}
+
+	// Only if device doesn't have touch support
+	if ( ! touchSupport ) {
+		// Display shortcuts modal link
+		$( '#shortcuts-link' ).removeAttr( 'hidden' );
+
+		// Add keyboard shorcuts
+		Mousetrap.bind( 'mod+alt+u', function() {
+			$( "#cyrillic-copy" ).trigger( "click" );
+			return false;
+		} );
+		Mousetrap.bind( 'mod+alt+i', function() {
+			$( "#cyrillic-cut" ).trigger( "click" );
+			return false;
+		} );
+		Mousetrap.bind( 'mod+alt+o', function() {
+			$( "#cyrillic-reset" ).trigger( "click" );
+			return false;
+		} );
+		Mousetrap.bind( 'mod+shift+alt+u', function() {
+			$( "#latin-copy" ).trigger( "click" );
+			return false;
+		} );
+		Mousetrap.bind( 'mod+shift+alt+i', function() {
+			$( "#latin-cut" ).trigger( "click" );
+			return false;
+		} );
+		Mousetrap.bind( 'mod+shift+alt+o', function() {
+			$( "#latin-reset" ).trigger( "click" );
+			return false;
+		} );
+		Mousetrap.bind( "mod+alt+c", function() {
+			$( "#cyrillic" ).focus();
+			return false;
+		} );
+		Mousetrap.bind( [ 'mod+alt+l', 'mod+shift+alt+l' ], function() {
+			$( "#latin" ).focus();
+			return false;
+		} );
 	}
 } );

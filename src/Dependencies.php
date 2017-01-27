@@ -42,7 +42,8 @@ class Dependencies {
 		'https://unpkg.com/bootstrap@4.0.0-alpha.6/dist/js/bootstrap.min.js',
 		'https://unpkg.com/serbian-transliteration@1.0.0/dist/serbian-transliteration.min.js',
 		'https://unpkg.com/autosize@3.0.20/dist/autosize.min.js',
-		'/assets/js/main.min.js?v=1',
+		'https://unpkg.com/mousetrap@1.6.0/mousetrap.min.js',
+		'/assets/js/main.min.js?v=2',
 	];
 
 	/**
