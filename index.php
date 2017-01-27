@@ -42,7 +42,11 @@ Main::load();
 			document.body.className = document.body.className.replace( 'no-js', 'js' );
 		</script>
 		<!--[if lt IE 8]>
-			<p class="browserupgrade">Користите <strong>застарели</strong> прегледач веба. Молимо вас да га <a href="http://browsehappy.com/?locale=sr_RS">ажурирате</a> да бисте унапредили доживљај.</p>
+			<div class="row">
+				<div class="col-12 text-center alert alert-danger">
+					Користите <strong>застарели</strong> прегледач веба. Молимо вас да га <a href="http://browsehappy.com/?locale=sr_RS">ажурирате</a> да бисте унапредили доживљај.
+				</div>
+			</div>
 		<![endif]-->
 		<div class="container">
 			<h1 class="display-4 text-center">Пресловар</h1>
