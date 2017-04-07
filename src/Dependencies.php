@@ -43,7 +43,7 @@ class Dependencies {
 		'https://unpkg.com/serbian-transliteration@1.0.0/dist/serbian-transliteration.min.js',
 		'https://unpkg.com/autosize@3.0.20/dist/autosize.min.js',
 		'https://unpkg.com/mousetrap@1.6.1/mousetrap.min.js',
-		'/assets/js/main.min.js?v=2',
+		'/assets/js/main.min.js?v=3',
 	];
 
 	/**
